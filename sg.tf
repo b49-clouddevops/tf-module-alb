@@ -1,5 +1,5 @@
 
-# Public LoadBalancer SG ; This hsa to 
+# Public LoadBalancer SG ; This has to be created only if it's running againt th Public Module
 resource "aws_security_group" "alb_public" {
   name        = "roboshop-public-alb-${var.ENV}"
   description = "roboshop-public-alb-${var.ENV}"
@@ -27,7 +27,7 @@ resource "aws_security_group" "alb_public" {
 }
 
 
-# Private LoadBalancer SG
+# Private LoadBalancer SG; This has to be created only if it's running againt th Public Module
 resource "aws_security_group" "alb_private" {
   name        = "roboshop-private-alb-${var.ENV}"
   description = "roboshop-private-alb-${var.ENV}"
