@@ -1,6 +1,7 @@
 
 # Public LoadBalancer SG ; This has to be created only if it's running againt th Public Module
 resource "aws_security_group" "alb_public" {
+  count       =  
   name        = "roboshop-public-alb-${var.ENV}"
   description = "roboshop-public-alb-${var.ENV}"
   vpc_id      = data.terraform_remote_state.vpc.outputs.VPC_ID
