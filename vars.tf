@@ -1,3 +1,3 @@
 variable "ENV" {}
 variable "ALB_NAME" {}
-variable "INERNAL" {}
+variable "INTERNAL" {}
