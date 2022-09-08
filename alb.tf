@@ -4,8 +4,8 @@ resource "aws_lb" "alb" {
   load_balancer_type = "application"
   # subnets            = If you're running the Public Module, LB should be attached under the public subnets. If it's running against private, then this has to be attached
   #                      to private subnets.
-  subnets            = var.INTERNAL ? [aws_security_group.alb_private.id] : [aws_security_group.alb_public.id] 
-  security_groups    = var.INTERNAL ? [aws_security_group.alb_private.id] : [aws_security_group.alb_public.id] 
+  subnets            = var.INTERNAL ? data.aws
+  security_groups    = var.INTERNAL ? [aws_security_group.alb_private.*.id] : [aws_security_group.alb_public.*.id] 
 
   enable_deletion_protection = true
 
