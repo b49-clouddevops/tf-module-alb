@@ -1,5 +1,5 @@
 
-# Public LoadBalancer SG
+# Public LoadBalancer SG ; This hsa to 
 resource "aws_security_group" "alb_public" {
   name        = "roboshop-public-alb-${var.ENV}"
   description = "roboshop-public-alb-${var.ENV}"
