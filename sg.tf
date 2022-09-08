@@ -1,7 +1,8 @@
 
 # Public LoadBalancer SG ; This has to be created only if it's running againt th Public Module
 resource "aws_security_group" "alb_public" {
-  count       = 0 or 1  ( when you run this for private : 0. if you run public 1) 
+  count       = 
+  # count       = 0 or 1  ( when you run this for private : 0. if you run public 1) 
   name        = "roboshop-public-alb-${var.ENV}"
   description = "roboshop-public-alb-${var.ENV}"
   vpc_id      = data.terraform_remote_state.vpc.outputs.VPC_ID
@@ -30,7 +31,7 @@ resource "aws_security_group" "alb_public" {
 
 # Private LoadBalancer SG; This has to be created only if it's running againt th Public Module
 resource "aws_security_group" "alb_private" {
-  count       = 0 or 1  ( when you run this for private : 0. if you run public 1) 
+  count       = 0 or 1  ( when you run this for private : 1. if you run public 0) 
   name        = "roboshop-private-alb-${var.ENV}"
   description = "roboshop-private-alb-${var.ENV}"
   vpc_id      = data.terraform_remote_state.vpc.outputs.VPC_ID
@@ -40,7 +41,7 @@ resource "aws_security_group" "alb_private" {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = []
   }
 
   egress {
