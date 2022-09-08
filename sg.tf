@@ -1,7 +1,7 @@
 
 # Public LoadBalancer SG ; This has to be created only if it's running againt th Public Module
 resource "aws_security_group" "alb_public" {
-  count       =  ???????
+  count       =  var.INTERNAL ? 0 : 1
   # count       = 0 or 1  ( when you run this for private : 0. if you run public 1) 
   name        = "roboshop-public-alb-${var.ENV}"
   description = "roboshop-public-alb-${var.ENV}"
@@ -31,7 +31,7 @@ resource "aws_security_group" "alb_public" {
 
 # Private LoadBalancer SG; This has to be created only if it's running againt th Public Module
 resource "aws_security_group" "alb_private" {
-  count       = ?????
+  count       =  var.INTERNAL ? 1 : 0
  # count       = 0 or 1  ( when you run this for private : 1. if you run public 0) 
   name        = "roboshop-private-alb-${var.ENV}"
   description = "roboshop-private-alb-${var.ENV}"
